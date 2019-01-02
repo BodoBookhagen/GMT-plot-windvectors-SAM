@@ -122,7 +122,7 @@ convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 
 
-
+#Will need more work to plot unit vector:
 # SCUNITVECT=$( echo  "scale=8; $REFVECT/$VECTSCALE" | bc ) 
 # #   x-position  y-position  direction  length
 # #psxy -R -J -D3.0i/${VSCALEOFF}i/5.0i/0.2i  -Sv0.008i/0.06i/0.03i -L -G0 -N -W1 -O -K   << EOF >> $OFILE
@@ -140,7 +140,7 @@ convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 # #
 
 
-# # COMBINE plots
+# # COMBINE plots with imagemagick
 # convert -quality 50 -density 150 ${POSTSCRIPT_BASENAME}_DEM_lvl8points.png ${POSTSCRIPT_BASENAME}_NDVI.png ${POSTSCRIPT_BASENAME}_E_steep.png ${POSTSCRIPT_BASENAME}_N_steep.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_DEM_NDVI_E_N_steepening_combined.jpg
 # 
 # convert -quality 100 -density 300 ${POSTSCRIPT_BASENAME}_DEM_lvl8points.png ${POSTSCRIPT_BASENAME}_NDVI.png ${POSTSCRIPT_BASENAME}_E_steep.png ${POSTSCRIPT_BASENAME}_N_steep.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_DEM_NDVI_E_N_steepening_combined.png
