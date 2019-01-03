@@ -5,11 +5,11 @@ For a more detailed description, see blog entry at [GMT-plot-windvectors](https:
 
 Example output images are (explained on blog entry):
 
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.png)
+![ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.png)
 
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.png)
+![ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.png)
 
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.png)
+![ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.png)
 
 
 
