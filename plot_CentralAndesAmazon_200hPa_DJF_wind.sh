@@ -87,15 +87,21 @@ echo " "
 echo "Creating file $POSTSCRIPT1"
 echo " "
 #gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS2_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS2_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
+gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS2_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
 gmt pscoast -W1/thin,black -R -J -N1/thin,gray -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
 gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,white -K -O -P >> $POSTSCRIPT1
 gmt grdvector -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
 gmt grdvector -S${VECTSCALE2} -Q0.6c+ba+p0.01p,gray -W0.01p,gray ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix12 -J -O -K -P >> $POSTSCRIPT1
-gmt psxy -W2.5p,white -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
+gmt psxy -W2.5p,red -L << EOF -R -J -O -K -P >> $POSTSCRIPT1
+-69 -28
+-69 -22
+-63 -22
+-63 -28
+EOF
+gmt psxy -W2.5p,gray -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 2c 2c
 EOF
-gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $POSTSCRIPT1
+gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,gray  << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 BH
 EOF
 gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
@@ -110,11 +116,17 @@ echo " "
 echo "Creating file $POSTSCRIPT1"
 echo " "
 #gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
+gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
 gmt pscoast -W1/thin,black -R -J -N1/thin,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
 gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,white -K -O -P >> $POSTSCRIPT1
 gmt grdvector -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
 gmt grdvector -S${VECTSCALE2} -Q0.6c+ba+p0.01p -W0p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix12 -J -O -K -P >> $POSTSCRIPT1
+gmt psxy -W2.5p,red -L << EOF -R -J -O -K -P >> $POSTSCRIPT1
+-69 -28
+-69 -22
+-63 -22
+-63 -28
+EOF
 gmt psxy -W2.5p,white -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 2c 2c
 EOF
@@ -132,13 +144,19 @@ echo " "
 echo "Creating file $POSTSCRIPT1"
 echo " "
 #gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-gmt pscoast -W1/thin,black -R -J -N1/faint,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
+gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
+gmt pscoast -W1/thin,black -R -J -N1/thin,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
 #gmt grdvector -W1p -S${VECTSCALE} -Q0.3c+ba ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
 gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,white -K -O -P >> $POSTSCRIPT1
 #gmt grdvector -Gblack -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
 gmt grdvector -S${VECTSCALE} -Q0.6c+ba+p -W1p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
 gmt grdvector -Gblack -S${VECTSCALE2} -Q0.5c+ba -W1p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix16 -J -O -K -P >> $POSTSCRIPT1
+gmt psxy -W2.5p,red -L << EOF -R -J -O -K -P >> $POSTSCRIPT1
+-69 -28
+-69 -22
+-63 -22
+-63 -28
+EOF
 gmt psxy -W2.5p,white -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 2c 2c
 EOF
