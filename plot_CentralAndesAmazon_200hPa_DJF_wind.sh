@@ -139,7 +139,6 @@ convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 
 POSTSCRIPT1=${POSTSCRIPT_BASENAME}_windvelocity.ps
-#Make colorscale
 echo " "
 echo "Creating file $POSTSCRIPT1"
 echo " "
