@@ -104,7 +104,7 @@ EOF
 gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,gray  << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 BH
 EOF
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
@@ -133,7 +133,7 @@ EOF
 gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 BH
 EOF
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
@@ -143,14 +143,15 @@ POSTSCRIPT1=${POSTSCRIPT_BASENAME}_windvelocity.ps
 echo " "
 echo "Creating file $POSTSCRIPT1"
 echo " "
+VECTSCALE=0.04c
+VECTSCALE2=0.02c
 #gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
 gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
 gmt pscoast -W1/thin,black -R -J -N1/thin,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
 #gmt grdvector -W1p -S${VECTSCALE} -Q0.3c+ba ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
 gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,white -K -O -P >> $POSTSCRIPT1
-#gmt grdvector -Gblack -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
-gmt grdvector -S${VECTSCALE} -Q0.6c+ba+p -W1p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
-gmt grdvector -Gblack -S${VECTSCALE2} -Q0.5c+ba -W1p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix16 -J -O -K -P >> $POSTSCRIPT1
+#gmt grdvector -S${VECTSCALE} -W0.5p,black ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix4 -J -O -K -P >> $POSTSCRIPT1
+gmt grdvector -Gblack -S${VECTSCALE2} -Q0.4c+ba+gblack+pfaint,black -W0p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix7 -J -O -K -P >> $POSTSCRIPT1
 gmt psxy -W2.5p,red -L << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -69 -28
 -69 -22
@@ -163,6 +164,6 @@ EOF
 gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 BH
 EOF
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
