@@ -106,7 +106,7 @@ gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,gray  << EOF -R -J -O -K -P >> $PO
 EOF
 gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
-convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+convert -alpha off -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 POSTSCRIPT1=${POSTSCRIPT_BASENAME}_relieftopo.ps
 #Make colorscale
@@ -135,7 +135,7 @@ gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $P
 EOF
 gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
-convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+convert -alpha off -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 
 POSTSCRIPT1=${POSTSCRIPT_BASENAME}_windvelocity.ps
@@ -165,4 +165,4 @@ gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $P
 EOF
 gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
-convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+convert -alpha off -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
